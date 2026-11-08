@@ -1,0 +1,700 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>氢能科学与工程231班 | 赴氢能蓝海，筑绿色未来</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          hydrogen: {
+            50:  '#eef8f7',
+            100: '#d7f1ef',
+            300: '#7bd8cf',
+            500: '#12b5a6',
+            600: '#0d9488',
+            700: '#0f6e6b',
+            900: '#0c3c42'
+          },
+          energy: {
+            400: '#38bdf8',
+            600: '#0284c7',
+            800: '#074366'
+          }
+        },
+        fontFamily: {
+          display: ['"Microsoft Yahei"', '"PingFang SC"', 'sans-serif']
+        }
+      }
+    }
+  }
+</script>
+<style>
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Microsoft Yahei', 'PingFang SC', sans-serif;
+    background: #f7fbfc;
+    color: #1f2937;
+  }
+
+  /* 顶部导航 */
+  .nav-blur {
+    background: rgba(8, 45, 58, 0.72);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+  }
+
+  /* 首屏Banner */
+  .hero {
+    position: relative;
+    min-height: 100vh;
+    overflow: hidden;
+    background:
+      radial-gradient(circle at 20% 20%, rgba(56,189,248,0.45), transparent 26%),
+      radial-gradient(circle at 80% 10%, rgba(18,181,166,0.35), transparent 28%),
+      radial-gradient(circle at 60% 90%, rgba(14,165,233,0.45), transparent 32%),
+      linear-gradient(135deg, #062b3a 0%, #074366 45%, #0c6e78 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(125,211,252,0.08) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(125,211,252,0.08) 1px, transparent 1px);
+    background-size: 44px 44px;
+    mask-image: radial-gradient(ellipse at center, black 40%, transparent 75%);
+  }
+
+  .hydrogen-icon {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(32px);
+    opacity: 0.55;
+    animation: float 10s ease-in-out infinite;
+  }
+  .h1 { width: 260px; height: 260px; background: #22d3ee; top: 12%; left: 8%; }
+  .h2 { width: 340px; height: 340px; background: #34d399; bottom: 10%; right: 10%; animation-delay: -4s; }
+  .h3 { width: 200px; height: 200px; background: #38bdf8; top: 50%; left: 55%; animation-delay: -7s; }
+
+  @keyframes float {
+    0%,100% { transform: translateY(0) scale(1); }
+    50% { transform: translateY(-22px) scale(1.06); }
+  }
+
+  .hero-title {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    color: #fff;
+    padding: 24px;
+  }
+
+  .hero-title .eyebrow {
+    display: inline-block;
+    padding: 6px 14px;
+    border: 1px solid rgba(125,211,252,0.5);
+    border-radius: 999px;
+    color: #bae6fd;
+    font-size: 14px;
+    letter-spacing: 4px;
+    margin-bottom: 18px;
+  }
+
+  .hero-title h1 {
+    font-size: clamp(32px, 5vw, 64px);
+    font-weight: 800;
+    line-height: 1.15;
+    letter-spacing: 2px;
+    text-shadow: 0 10px 30px rgba(0,0,0,0.35);
+  }
+
+  .hero-title h1 span {
+    background: linear-gradient(90deg, #7dd3fc, #5eead4, #a7f3d0);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .hero-title p.lead {
+    margin-top: 18px;
+    font-size: clamp(16px, 1.6vw, 20px);
+    color: #e0f2fe;
+    max-width: 760px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .hero-tags {
+    margin-top: 28px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    justify-content: center;
+  }
+
+  .hero-tags span {
+    padding: 9px 16px;
+    border-radius: 999px;
+    background: rgba(255,255,255,0.12);
+    border: 1px solid rgba(255,255,255,0.22);
+    color: #e0f2fe;
+    font-size: 14px;
+  }
+
+  .scroll-hint {
+    position: absolute;
+    left: 50%;
+    bottom: 24px;
+    transform: translateX(-50%);
+    color: #bae6fd;
+    font-size: 13px;
+    letter-spacing: 2px;
+    z-index: 2;
+  }
+
+  /* 通用区块标题 */
+  .section-title {
+    display: inline-flex;
+    align-items: baseline;
+    gap: 14px;
+    margin-bottom: 30px;
+  }
+  .section-title .num {
+    font-family: 'Georgia', serif;
+    font-size: 42px;
+    color: rgba(12,110,120,0.18);
+    font-weight: 700;
+  }
+  .section-title h2 {
+    font-size: 28px;
+    color: #0c4a5c;
+    font-weight: 700;
+  }
+  .section-title h2::after {
+    content: '';
+    display: block;
+    width: 64px;
+    height: 4px;
+    background: linear-gradient(90deg, #22d3ee, #14b8a6);
+    margin-top: 10px;
+    border-radius: 2px;
+  }
+
+  /* 卡片通用 */
+  .glass-card {
+    background: rgba(255,255,255,0.78);
+    border: 1px solid rgba(255,255,255,0.6);
+    backdrop-filter: blur(8px);
+    border-radius: 20px;
+    box-shadow: 0 20px 40px rgba(15,88,96,0.08);
+  }
+
+  /* 班级概况 */
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1.3fr 1fr;
+    gap: 24px;
+  }
+  @media (max-width: 860px) {
+    .about-grid { grid-template-columns: 1fr; }
+  }
+
+  .info-list li {
+    padding: 14px 16px;
+    border-left: 3px solid #14b8a6;
+    background: linear-gradient(90deg, rgba(20,184,166,0.08), transparent);
+    margin-bottom: 12px;
+    border-radius: 10px;
+  }
+
+  /* 数据亮点 */
+  .stat-card {
+    background: linear-gradient(135deg, #0ea5e9, #14b8a6);
+    color: #fff;
+    border-radius: 20px;
+    padding: 24px;
+    box-shadow: 0 18px 40px rgba(14,165,233,0.25);
+  }
+  .stat-number {
+    font-size: 42px;
+    font-weight: 800;
+    letter-spacing: 1px;
+  }
+  .stat-label {
+    font-size: 14px;
+    opacity: 0.92;
+    margin-top: 6px;
+  }
+
+  /* 成果时间线 */
+  .timeline {
+    position: relative;
+    padding-left: 24px;
+  }
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 8px;
+    top: 8px;
+    bottom: 8px;
+    width: 2px;
+    background: linear-gradient(180deg, #22d3ee, #14b8a6, #0ea5e9);
+  }
+  .timeline-item {
+    position: relative;
+    padding: 14px 18px;
+    margin-bottom: 14px;
+    background: #fff;
+    border-radius: 14px;
+    box-shadow: 0 10px 24px rgba(15,88,96,0.08);
+  }
+  .timeline-item::before {
+    content: '';
+    position: absolute;
+    left: -20px;
+    top: 20px;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: #14b8a6;
+    border: 2px solid #fff;
+    box-shadow: 0 0 0 3px rgba(20,184,166,0.25);
+  }
+
+  /* 相册 */
+  .photo-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-auto-rows: 180px;
+    gap: 14px;
+  }
+  .photo-grid .item {
+    border-radius: 16px;
+    overflow: hidden;
+    position: relative;
+    background: linear-gradient(135deg, #bae6fd, #a7f3d0);
+    box-shadow: 0 12px 24px rgba(15,88,96,0.12);
+    transition: transform .4s ease;
+  }
+  .photo-grid .item:hover { transform: translateY(-6px); }
+  .photo-grid .item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  .photo-grid .item .ph {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #0c4a5c;
+    font-weight: 700;
+    letter-spacing: 2px;
+    background: linear-gradient(135deg, rgba(186,230,253,0.85), rgba(167,243,208,0.85));
+  }
+  .row-2 { grid-row: span 2; }
+  .col-2 { grid-column: span 2; }
+
+  @media (max-width: 860px) {
+    .photo-grid { grid-template-columns: repeat(2, 1fr); }
+    .col-2 { grid-column: span 1; }
+    .row-2 { grid-row: span 1; }
+  }
+
+  /* 页脚 */
+  footer {
+    background:
+      radial-gradient(circle at 20% 0%, rgba(34,211,238,0.18), transparent 30%),
+      radial-gradient(circle at 80% 100%, rgba(20,184,166,0.18), transparent 30%),
+      linear-gradient(135deg, #062b3a, #074366);
+    color: #e0f2fe;
+  }
+
+  .btn-primary {
+    background: linear-gradient(90deg, #22d3ee, #14b8a6);
+    color: #04252b;
+    padding: 12px 22px;
+    border-radius: 999px;
+    font-weight: 700;
+    box-shadow: 0 12px 24px rgba(20,184,166,0.3);
+    transition: transform .2s ease;
+  }
+  .btn-primary:hover { transform: translateY(-2px); }
+</style>
+</head>
+<body>
+
+<!-- 导航栏 -->
+<nav class="nav-blur fixed w-full z-50 top-0">
+  <div class="max-w-7xl mx-auto px-6 py-3 flex justify-between items-center text-white">
+    <div class="font-bold text-lg tracking-wider">氢231 · 班级主页</div>
+    <div class="hidden md:flex gap-7 text-sm">
+      <a href="#about" class="hover:text-cyan-300">班级概况</a>
+      <a href="#study" class="hover:text-cyan-300">笃学争先</a>
+      <a href="#industry" class="hover:text-cyan-300">产教融通</a>
+      <a href="#science" class="hover:text-cyan-300">科创硕果</a>
+      <a href="#life" class="hover:text-cyan-300">班级风采</a>
+      <a href="#honor" class="hover:text-cyan-300">荣誉展示</a>
+    </div>
+  </div>
+</nav>
+
+<!-- 首屏 -->
+<section class="hero">
+  <div class="hydrogen-icon h1"></div>
+  <div class="hydrogen-icon h2"></div>
+  <div class="hydrogen-icon h3"></div>
+
+  <div class="hero-title">
+    <div class="eyebrow">HYDROGEN 231 · CLASS PROFILE</div>
+    <h1>赴氢能蓝海<br><span>筑绿色未来</span></h1>
+    <p class="lead">
+      氢能科学与工程231班，以青春之名，向绿色能源出发；以专业之力，奔赴双碳时代的山海远方。
+    </p>
+    <div class="hero-tags">
+      <span>华东地区首届氢能本科班</span>
+      <span>励真励实 · 逐梦远航</span>
+      <span>39位同学 · 七省十八市</span>
+      <span>向着氢能方向，我们一同出发</span>
+    </div>
+
+    <div class="mt-10">
+      <a href="#about" class="btn-primary inline-block">进入班级主页</a>
+    </div>
+  </div>
+
+  <div class="scroll-hint">↓ 向下滚动</div>
+</section>
+
+<!-- 班级概况 -->
+<section id="about" class="py-24 px-6">
+  <div class="max-w-7xl mx-auto">
+    <div class="section-title">
+      <span class="num">01</span>
+      <h2>班级概况</h2>
+    </div>
+
+    <div class="about-grid">
+      <div class="glass-card p-8">
+        <h3 class="text-2xl font-bold text-hydrogen-900 mb-4">氢起，应运而生</h3>
+        <p class="text-gray-700 leading-relaxed">
+          氢能231是华东地区首届氢能本科班，国家控制布点新专业。2023年9月，39名同学从七省十八市相聚于此，
+          在班主任与辅导员的引领下，形成“思想有高度、学习有厚度、科研有力度、生活有温度”的班级氛围。
+        </p>
+        <p class="text-gray-700 leading-relaxed mt-4">
+          班级实行班团一体化运行，班委与团干部协同分工，主题团日、专题教育、学业帮扶、职业规划持续推进，
+          让每一位同学都成为氢能道路上的同行者。
+        </p>
+
+        <ul class="info-list mt-6">
+          <li><strong>班级规模：</strong>39人，来自七省十八市</li>
+          <li><strong>建设理念：</strong>班团一体化，学习互助，科研共进</li>
+          <li><strong>班训：</strong>励真励实，逐梦远航</li>
+          <li><strong>班级愿景：</strong>成为氢能领域有理想、有本领、有担当的青年集体</li>
+        </ul>
+      </div>
+
+      <div class="grid grid-rows-2 gap-5">
+        <div class="stat-card">
+          <div class="stat-number">39</div>
+          <div class="stat-label">名同学，组成氢231大家庭</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number">七省十八市</div>
+          <div class="stat-label">相聚氢能赛道，共赴绿色未来</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 笃学争先 -->
+<section id="study" class="py-24 px-6 bg-gradient-to-b from-white to-hydrogen-50">
+  <div class="max-w-7xl mx-auto">
+    <div class="section-title">
+      <span class="num">02</span>
+      <h2>笃学争先</h2>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-6">
+      <div class="glass-card p-7">
+        <div class="text-hydrogen-600 text-sm font-bold mb-2">学风建设</div>
+        <h3 class="text-xl font-bold mb-3">勤学共进</h3>
+        <ul class="space-y-2 text-gray-700 text-sm">
+          <li>· 一对一学业帮扶</li>
+          <li>· 复习小课堂常态化</li>
+          <li>· 师生对话与生涯规划</li>
+          <li>· 期中期末总结班会</li>
+        </ul>
+      </div>
+
+      <div class="glass-card p-7">
+        <div class="text-hydrogen-600 text-sm font-bold mb-2">学习成果</div>
+        <h3 class="text-xl font-bold mb-3">硕果纷呈</h3>
+        <ul class="space-y-2 text-gray-700 text-sm">
+          <li>· 校级及以上奖学金 36 人次</li>
+          <li>· 校级及以上荣誉称号 93 人次</li>
+          <li>· 学风优良宿舍 8 间</li>
+          <li>· 多名同学推免至211高校深造</li>
+        </ul>
+      </div>
+
+      <div class="glass-card p-7">
+        <div class="text-hydrogen-600 text-sm font-bold mb-2">班级氛围</div>
+        <h3 class="text-xl font-bold mb-3">同心同行</h3>
+        <ul class="space-y-2 text-gray-700 text-sm">
+          <li>· 班级学习共同体</li>
+          <li>· 考研就业信息共享</li>
+          <li>· 心理关怀与集体活动</li>
+          <li>· 增强班级凝聚力与归属感</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 产教融通 -->
+<section id="industry" class="py-24 px-6">
+  <div class="max-w-7xl mx-auto">
+    <div class="section-title">
+      <span class="num">03</span>
+      <h2>产教融通</h2>
+    </div>
+
+    <div class="glass-card p-8 md:p-10">
+      <div class="grid md:grid-cols-2 gap-8 items-center">
+        <div>
+          <h3 class="text-2xl font-bold text-hydrogen-900 mb-4">所行皆课，所见皆师</h3>
+          <p class="text-gray-700 leading-relaxed">
+            班级全员走进新能源产业一线，深入阳光电源、国轩高科、蜂巢能源、枡水科技等企业参观实习，
+            近距离接触制氢装备、燃料电池、储能系统与生产线，把课堂知识连接到真实产业场景。
+          </p>
+          <p class="text-gray-700 leading-relaxed mt-4">
+            同学们在实践中理解氢能产业链，在交流中明确专业方向，在团队任务中锻炼协作能力。
+            这不仅是一次参观学习，更是一场面向未来的预演。
+          </p>
+        </div>
+
+        <div class="grid grid-cols-2 gap-4">
+          <div class="bg-white rounded-2xl p-5 shadow-md border border-hydrogen-100">
+            <div class="text-3xl mb-2">🏭</div>
+            <div class="font-bold text-hydrogen-900 mb-1">企业实践</div>
+            <div class="text-sm text-gray-600">走进龙头企业，接触真实氢能产线</div>
+          </div>
+          <div class="bg-white rounded-2xl p-5 shadow-md border border-hydrogen-100">
+            <div class="text-3xl mb-2">🧪</div>
+            <div class="font-bold text-hydrogen-900 mb-1">专业训练</div>
+            <div class="text-sm text-gray-600">将理论知识转化为工程认知</div>
+          </div>
+          <div class="bg-white rounded-2xl p-5 shadow-md border border-hydrogen-100">
+            <div class="text-3xl mb-2">🤝</div>
+            <div class="font-bold text-hydrogen-900 mb-1">团队协作</div>
+            <div class="text-sm text-gray-600">在集体任务中提升沟通与执行</div>
+          </div>
+          <div class="bg-white rounded-2xl p-5 shadow-md border border-hydrogen-100">
+            <div class="text-3xl mb-2">🌱</div>
+            <div class="font-bold text-hydrogen-900 mb-1">绿色担当</div>
+            <div class="text-sm text-gray-600">面向双碳战略，明确青年责任</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 科创硕果 -->
+<section id="science" class="py-24 px-6 bg-gradient-to-b from-hydrogen-50 to-white">
+  <div class="max-w-7xl mx-auto">
+    <div class="section-title">
+      <span class="num">04</span>
+      <h2>科创硕果</h2>
+    </div>
+
+    <div class="grid md:grid-cols-2 gap-6 mb-6">
+      <div class="stat-card">
+        <div class="text-sm opacity-90 mb-1">SCI论文</div>
+        <div class="stat-number">18篇</div>
+        <div class="stat-label">第一作者5篇，中科院一区12篇，总影响因子220+</div>
+      </div>
+      <div class="stat-card">
+        <div class="text-sm opacity-90 mb-1">竞赛获奖</div>
+        <div class="stat-number">50次</div>
+        <div class="stat-label">国家级4项，省级20项，校级36项</div>
+      </div>
+    </div>
+
+    <div class="glass-card p-8">
+      <h3 class="text-xl font-bold text-hydrogen-900 mb-5">科创成长轨迹</h3>
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="font-bold text-hydrogen-700">科研入门</div>
+          <div class="text-sm text-gray-600 mt-1">进入课题组，学习文献阅读、实验操作与数据分析，建立科研基本素养。</div>
+        </div>
+        <div class="timeline-item">
+          <div class="font-bold text-hydrogen-700">项目训练</div>
+          <div class="text-sm text-gray-600 mt-1">参与大创项目、企业合作项目与学科竞赛，在真实问题中锻炼创新能力。</div>
+        </div>
+        <div class="timeline-item">
+          <div class="font-bold text-hydrogen-700">论文发表</div>
+          <div class="text-sm text-gray-600 mt-1">围绕氢能材料、储能器件、绿色能源方向发表学术成果。</div>
+        </div>
+        <div class="timeline-item">
+          <div class="font-bold text-hydrogen-700">竞赛突破</div>
+          <div class="text-sm text-gray-600 mt-1">在中国国际大学生创新大赛、挑战杯等赛事中斩获多项荣誉。</div>
+        </div>
+        <div class="timeline-item">
+          <div class="font-bold text-hydrogen-700">继续深造</div>
+          <div class="text-sm text-gray-600 mt-1">多名同学成功推免，将氢能研究之路延续到更高平台。</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 班级风采 -->
+<section id="life" class="py-24 px-6">
+  <div class="max-w-7xl mx-auto">
+    <div class="section-title">
+      <span class="num">05</span>
+      <h2>班级风采</h2>
+    </div>
+
+    <div class="glass-card p-6 md:p-8">
+      <p class="text-gray-700 mb-6 leading-relaxed">
+        课堂之外，氢231的身影出现在运动会、篮球联赛、定向越野、辩论赛、话剧汇演与红色主题团日中。
+        我们不仅在书桌前追求知识，也在集体活动中学会团结、表达与担当。
+      </p>
+
+      <div class="photo-grid">
+        <div class="item col-2 row-2">
+          <img src="img/class.jpg" alt="班级集体照" onerror="this.style.display='none'"/>
+          <div class="ph">班级合影</div>
+        </div>
+        <div class="item">
+          <img src="img/tuanri.jpg" alt="团日活动" onerror="this.style.display='none'"/>
+          <div class="ph">主题团日</div>
+        </div>
+        <div class="item">
+          <img src="img/qiye.jpg" alt="企业实践" onerror="this.style.display='none'"/>
+          <div class="ph">企业实践</div>
+        </div>
+        <div class="item">
+          <img src="img/wenti.jpg" alt="运动会" onerror="this.style.display='none'"/>
+          <div class="ph">运动会</div>
+        </div>
+        <div class="item">
+          <img src="img/jingsai.jpg" alt="科创竞赛" onerror="this.style.display='none'"/>
+          <div class="ph">科创竞赛</div>
+        </div>
+        <div class="item col-2">
+          <img src="img/shiyan.jpg" alt="班级活动" onerror="this.style.display='none'"/>
+          <div class="ph">班级活动</div>
+        </div>
+      </div>
+
+      <p class="text-sm text-gray-500 mt-5">
+        提示：将真实照片上传后，把 <code>&lt;img src=""&gt;</code> 中的空引号替换为图片文件名或图片链接即可显示。
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- 荣誉展示 -->
+<section id="honor" class="py-24 px-6 bg-gradient-to-b from-hydrogen-50 to-white">
+  <div class="max-w-7xl mx-auto">
+    <div class="section-title">
+      <span class="num">06</span>
+      <h2>荣誉展示</h2>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-6">
+      <div class="glass-card p-7">
+        <div class="text-3xl mb-3">🏅</div>
+        <h3 class="text-xl font-bold text-hydrogen-900 mb-3">集体荣誉</h3>
+        <ul class="space-y-2 text-gray-700 text-sm">
+          <li>· 先进班集体</li>
+          <li>· 五四红旗团支部</li>
+          <li>· 优秀班级建设成果</li>
+        </ul>
+      </div>
+
+      <div class="glass-card p-7">
+        <div class="text-3xl mb-3">📚</div>
+        <h3 class="text-xl font-bold text-hydrogen-900 mb-3">学风荣誉</h3>
+        <ul class="space-y-2 text-gray-700 text-sm">
+          <li>· 校级及以上奖学金 36 人次</li>
+          <li>· 学风优良宿舍 8 间</li>
+          <li>· 多名同学获得推免资格</li>
+        </ul>
+      </div>
+
+      <div class="glass-card p-7">
+        <div class="text-3xl mb-3">🏆</div>
+        <h3 class="text-xl font-bold text-hydrogen-900 mb-3">竞赛荣誉</h3>
+        <ul class="space-y-2 text-gray-700 text-sm">
+          <li>· 科创竞赛累计获奖 50 次</li>
+          <li>· 国家级 4 项，省级 20 项</li>
+          <li>· 校级 36 项</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 结尾 -->
+<footer class="py-20 px-6 text-center">
+  <div class="max-w-4xl mx-auto">
+    <h2 class="text-3xl md:text-4xl font-bold mb-5">
+      氢燃少年志，<span class="text-cyan-300">绿赴时代光</span>
+    </h2>
+    <p class="text-gray-300 mb-8 leading-relaxed">
+      氢能231班，将继续以青春之力，深耕氢能赛道，奔赴绿色未来。<br>
+      向着氢能方向，我们一同出发。
+    </p>
+
+    <div class="flex flex-wrap justify-center gap-4 text-sm">
+      <span class="px-4 py-2 rounded-full bg-white/10 border border-white/20">氢能科学与工程231班</span>
+      <span class="px-4 py-2 rounded-full bg-white/10 border border-white/20">赴氢能蓝海 · 筑绿色未来</span>
+      <span class="px-4 py-2 rounded-full bg-white/10 border border-white/20">励真励实 · 逐梦远航</span>
+    </div>
+
+    <div class="mt-10 text-sm text-gray-400">
+      © 2026 氢能科学与工程231班班级主页 · All Rights Reserved
+    </div>
+  </div>
+</footer>
+
+<script>
+  // 导航滚动高亮
+  const sections = document.querySelectorAll('section[id]');
+  const navLinks = document.querySelectorAll('nav a');
+
+  window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(sec => {
+      const top = sec.offsetTop - 120;
+      if (scrollY >= top) current = sec.getAttribute('id');
+    });
+    navLinks.forEach(link => {
+      link.classList.remove('text-cyan-300');
+      if (link.getAttribute('href') === '#' + current) {
+        link.classList.add('text-cyan-300');
+      }
+    });
+  });
+</script>
+
+</body>
+</html>
